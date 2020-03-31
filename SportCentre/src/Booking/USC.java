@@ -2,7 +2,10 @@ package Booking;
 
 import java.util.Scanner;
 
+
 import static Booking.ExerciseClass.exer;
+import static Booking.Change_booking.cb;
+
 
 /**
  * @author jeevithasadasivam
@@ -28,6 +31,10 @@ public class USC {
 			USC_main();
 			break;
 		case 2:
+			exer.bookingList();
+			cb = new Change_booking();
+			System.out.println("Do you want to select another option\n");
+			USC_main();
 			break;
 		case 3:
 			break;
