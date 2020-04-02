@@ -1,8 +1,9 @@
 package Booking;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import static Booking.ExerciseClass.exer;
 /**
  * @author LAPTOP_MP0295
  *
@@ -13,7 +14,7 @@ public class Change_booking {
 	String group_exercise = null;
 	String time = null;
 	int price = 0;
-
+	LocalDate ld;
 	Scanner scan = new Scanner(System.in);
 
 	static Change_booking cb;
@@ -136,7 +137,7 @@ public class Change_booking {
 		choose = scan.next();
 		switch (choose) {
 		case "y":
-			cb = new Change_booking();
+			exer = new ExerciseClass();
 			break;
 		case "n":
 			break;
@@ -145,6 +146,7 @@ public class Change_booking {
 
 	public void bookingList() {
 		ArrayList<String> list = new ArrayList<>();
+		
 		list.add("Day: " + " " + day);
 		list.add("Enrolled Class: " + " " + group_exercise);
 		list.add("Time: " + " " + time);

@@ -33,10 +33,16 @@ public class USC {
 			USC_main();
 			break;
 		case 2:
-			exer.bookingList();
-			cb = new Change_booking();
-			System.out.println("Do you want to select another option\n");
-			USC_main();
+			try {
+				exer.bookingList();
+				cb = new Change_booking();
+				System.out.println("Do you want to select another option\n");
+				USC_main();
+			}
+			catch(Exception e) {
+				System.out.println("No booking available: "+e+"\nFirst Book A class");
+			}
+			
 			break;
 		case 3:
 			re=new Review();
