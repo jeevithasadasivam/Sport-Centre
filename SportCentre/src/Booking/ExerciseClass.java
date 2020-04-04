@@ -37,7 +37,8 @@ public final class ExerciseClass {
 			ld = LocalDate.of( y , m , d ); //Formating Date
 			Calendar cal = new GregorianCalendar(y,m,d);
 		    int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
-		    //return;
+		    
+		    
 		    if(ld.getDayOfWeek() == DayOfWeek.SUNDAY) {
 		    	System.out.println("Sunday");
 		    	day="Sunday";
@@ -79,7 +80,47 @@ public final class ExerciseClass {
 		    }
 		} 
 		if(check==2) {
-			System.out.println("Yoga\nZumba\nAquacise\nBox Fit\nEnter Group Exercise from the list");
+			if(check==2) {
+				System.out.println("Yoga\nZumba\nAquacise\nBox Fit\nEnter Group Exercise from the list");
+				group_exercise=scan.next();
+				if (group_exercise.equalsIgnoreCase("yoga")
+						|| group_exercise.equalsIgnoreCase("Zumba") || group_exercise.equalsIgnoreCase("Aquacise")
+						|| group_exercise.equalsIgnoreCase("BoxFit")) {
+					System.out.println("This class is available in every weekend\n");
+					System.out.println("Timetable for "+group_exercise+"\n"+"\nMorning: 9:00-12:00\nAfternoon: 1:00-4:00\nEvening: 6:00-9:00\n");
+					int y = 2020;
+					int m = 0;  // 1-12 for January-December.
+					System.out.println("Year: "+y);
+					System.out.println("Enter a month in MM Format\n");
+					m=scan.nextInt();
+					System.out.println("Enter a Weekend Date in dd format");
+					date=scan.next();
+					int d = Integer.parseInt( date );
+					ld = LocalDate.of( y , m , d ); //Formating Date
+					Calendar cal = new GregorianCalendar(y,m,d);
+				    int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+				    //return;
+				    if(ld.getDayOfWeek() == DayOfWeek.SUNDAY) {
+				    	day="SUNDAY";
+				    	Class_Sun();
+				    	
+				    }
+				    else if(ld.getDayOfWeek() == DayOfWeek.SATURDAY) {
+				    	day="SATURDAY";
+				    	Class_Sat();
+				    	
+				    }
+				    else{
+				    	System.out.println("Enter a valid date");
+				    }
+				    
+					
+					
+				}
+				else {
+					System.out.println("Enter a Valid Group Excercise Class name\n");
+				}
+				}
 
 		}
 		}	
