@@ -1,11 +1,11 @@
 package Booking;
-
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
+
 
 public final class ExerciseClass {
 
@@ -24,13 +24,14 @@ public final class ExerciseClass {
 		
 		System.out.println("Check the timetable\n1.Specifying the date\n2.Specifying Excercise name");
 		int check = scan.nextInt();
-		
+		try {
 		if(check==1) {
 			int y = 2020;
 			int m = 0;  // 1-12 for January-December.
 			System.out.println("YEAR:2020");
 			System.out.println("Enter a month in MM Format\n");
 			m=scan.nextInt();
+			
 			System.out.println("Enter a Weekend Date in dd format");
 			date=scan.next();
 			int d = Integer.parseInt( date );
@@ -50,15 +51,6 @@ public final class ExerciseClass {
 						|| group_exercise.equalsIgnoreCase("BoxFit")) {
 					Class_Sun();
 				}
-				day="Sunday";
-		    	System.out.println("Yoga\nZumba\nAquacise\nBox Fit\nSelect Group Exercise from the list");
-				group_exercise = scan.next();
-				
-				if (group_exercise.equalsIgnoreCase("yoga")
-						|| group_exercise.equalsIgnoreCase("Zumba") || group_exercise.equalsIgnoreCase("Aquacise")
-						|| group_exercise.equalsIgnoreCase("BoxFit")) {
-					Class_Sun();
-				} 	
 		    	
 		    }
 		    else if(ld.getDayOfWeek() == DayOfWeek.SATURDAY) {
@@ -76,11 +68,12 @@ public final class ExerciseClass {
 		    }
 		    else {
 		    	System.out.println("Enter a valid weekend date");
-		    	
-		    }
+		    }	
+		    
 		} 
 		if(check==2) {
-			if(check==2) {
+			try {
+			
 				System.out.println("Yoga\nZumba\nAquacise\nBox Fit\nEnter Group Exercise from the list");
 				group_exercise=scan.next();
 				if (group_exercise.equalsIgnoreCase("yoga")
@@ -99,7 +92,7 @@ public final class ExerciseClass {
 					ld = LocalDate.of( y , m , d ); //Formating Date
 					Calendar cal = new GregorianCalendar(y,m,d);
 				    int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
-				    //return;
+				    
 				    if(ld.getDayOfWeek() == DayOfWeek.SUNDAY) {
 				    	day="SUNDAY";
 				    	Class_Sun();
@@ -120,21 +113,27 @@ public final class ExerciseClass {
 				else {
 					System.out.println("Enter a Valid Group Excercise Class name\n");
 				}
-				}
+				
 
+			}catch(Exception e) {
+				System.out.println("Error Occured: "+ e);
+				
+			}
+		
+		
+		
 		}
+		}
+	catch(Exception e) {
+		System.out.println("Error Occured: " +e);
+	}
 		}	
 	
 	private void Class_Sun() {
-		// TODO Auto-generated method stub
+		
 		System.out.println("\nSelect Shift Timing\n1.Morning\n2.Afternoon\n3.Evening\n");
-		
-		
 		System.out.println("Timetable\nMorning: 9:00-12:00\nAfternoon: 1:00-4:00\nEvening: 6:00-9:00\n");
-		
-		
 		int shift = 0;
-
 		shift = scan.nextInt();
 
 		switch (shift) {
@@ -145,7 +144,6 @@ public final class ExerciseClass {
 					+ " " + time + "\n" + "Fees: " + " " + price);
 			System.out.println("Class Booked.. !!");
 			book_another();
-
 			break;
 
 		case 2:
@@ -169,21 +167,14 @@ public final class ExerciseClass {
 			System.out.println("Enter proper detail....\n");
 			break;
 		}
-
-		
 	}
 	
 	
 	private void Class_Sat() {
-		// TODO Auto-generated method stub
+		
 		System.out.println("\nSelect Shift Timing\n1.Morning\n2.Afternoon\n3.Evening\n");
-		
-		
 		System.out.println("Timetable\nMorning: 9:00-12:00\nAfternoon: 1:00-4:00\nEvening: 6:00-9:00\n");
-		
-		
 		int shift = 0;
-
 		shift = scan.nextInt();
 
 		switch (shift) {
@@ -194,7 +185,6 @@ public final class ExerciseClass {
 					+ " " + time + "\n" + "Fees: " + " " + price);
 			System.out.println("Class Booked.. !!");
 			book_another();
-
 			break;
 
 		case 2:
@@ -222,15 +212,12 @@ public final class ExerciseClass {
 		
 	}
 	
-	
-
 
 	private void book_another() {
-		// TODO Auto-generated method stub
+		
 		String ch=null;
 		System.out.println("Do you want to book another class\nPress y for Yes\nPress n for No\n");
 		ch=scan.next();
-		
 		switch (ch) {
 		case "y":
 			exer = new ExerciseClass();
